@@ -12,7 +12,7 @@ export const files = pgTable("files", {
   type: text("type").notNull(), // "folder"
 
   //storage information
-  fileUrl: text("file_url").notNull, // url to access file
+  fileUrl: text("file_url").notNull(), // url to access file
   thumbnailUrl: text("thumbnail_url"),
 
   //ownership information
@@ -35,8 +35,7 @@ parent: Each file/folder can have one parent folder
 children: Each folder can have many child files/folders
 */
 
-export const filesRelations = relations(files, ({one, many}) 
-=> ({
+export const filesRelations = relations(files, ({one, many}) => ({
   parent: one(files, {
     fields: [files.parentId],
     references: [files.id]
